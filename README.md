@@ -32,4 +32,6 @@ modo infinito
 ## elementos externos usados
 https://incolgames.itch.io/dungeon-platformer-tile-set-pixel-art - tileset de libre uso usado para las pruebas (esta definido que crearemos el propio, junto a los sprites de herramientas, personaje y UI)
 
+## ejecutable
+el ejecutable esta dentro de la carpeta del juego, el mas reciente sera siempre el que tenga el .rar, ese se debe descargar
    
