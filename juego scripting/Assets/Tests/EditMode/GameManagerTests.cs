@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Reflection;
 using NUnit.Framework;
 using UnityEngine;
@@ -116,5 +117,56 @@ public class GameManagerTests
         gameManager.ActualizarAparienciaBloque(bloque);
 
     Assert.That(tilemap.GetTile(Vector3Int.zero), Is.EqualTo(tileDanioFuerte));
+    }
+
+    [Test]
+    public void ReiniciarPorTiempoAgotado_RestauraEstadoInicial()
+    {
+        var tile = ScriptableObject.CreateInstance<Tile>();
+        tilemap.SetTile(Vector3Int.zero, tile);
+
+        var mapping = new GameManager.TileAssetMapping
+        {
+            tipo = TipoBloque.Piedra,
+            tileNormal = tile,
+            tilesProgresoDanio = System.Array.Empty<TileBase>(),
+            esBloqueDificil = false
+        };
+
+        gameManager.mappingTiles = new[] { mapping };
+        gameManager.posicionInicialPersonaje = Vector3Int.zero;
+
+    var metodoMapping = typeof(GameManager).GetMethod("InicializarMappingTiles", BindingFlags.NonPublic | BindingFlags.Instance);
+    metodoMapping.Invoke(gameManager, null);
+
+    var gridManager = new GridManager(tilemap, gameManager, 1);
+    var campoMalla = typeof(GameManager).GetField("malla", BindingFlags.NonPublic | BindingFlags.Instance);
+    campoMalla.SetValue(gameManager, gridManager);
+
+        var playerGO = new GameObject("Player");
+        gameManager.personajeTransform = playerGO.transform;
+        var playerController = new PlayerController(Vector3Int.zero, playerGO.transform, gridManager, gameManager);
+    var campoPersonaje = typeof(GameManager).GetField("personaje", BindingFlags.NonPublic | BindingFlags.Instance);
+    campoPersonaje.SetValue(gameManager, playerController);
+
+        playerController.ReiniciarPosicion(Vector3Int.one);
+
+    var timer = new TimerManager(5f, null);
+    var campoTemporizador = typeof(GameManager).GetField("temporizador", BindingFlags.NonPublic | BindingFlags.Instance);
+    campoTemporizador.SetValue(gameManager, timer);
+
+        gridManager.DestruirBloque(Vector3Int.zero, TipoHerramienta.Pico);
+        Assert.That(tilemap.GetTile(Vector3Int.zero), Is.Null);
+
+        var metodoReinicio = typeof(GameManager).GetMethod("ReiniciarPorTiempoAgotado", BindingFlags.NonPublic | BindingFlags.Instance);
+        metodoReinicio.Invoke(gameManager, null);
+
+        Assert.That(playerController.Posicion, Is.EqualTo(Vector3Int.zero));
+        Assert.That(tilemap.GetTile(Vector3Int.zero), Is.EqualTo(tile));
+        Assert.That(timer.TiempoActual, Is.EqualTo(timer.TiempoLimite));
+        Assert.That(timer.EstaActivo, Is.True);
+        Assert.That(gameManager.NivelActualCompletado, Is.False);
+
+        Object.DestroyImmediate(playerGO);
     }
 }

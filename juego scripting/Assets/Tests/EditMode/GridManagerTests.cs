@@ -107,4 +107,21 @@ public class GridManagerTests
     Assert.That(gridManager.EsPosicionValida(Vector3Int.right), Is.False);
     Assert.That(gridManager.EsPosicionValida(Vector3Int.left), Is.True);
     }
+
+        [Test]
+        public void RestablecerBloques_RestituyeTilesDestruidos()
+        {
+            var tile = ScriptableObject.CreateInstance<Tile>();
+            tilemap.SetTile(Vector3Int.zero, tile);
+
+            var gameManager = CrearGameManager(tile, TipoBloque.Piedra);
+            var gridManager = new GridManager(tilemap, gameManager, 1);
+
+            gridManager.DestruirBloque(Vector3Int.zero, TipoHerramienta.Pico);
+            Assert.That(tilemap.GetTile(Vector3Int.zero), Is.Null);
+
+            gridManager.RestablecerBloques();
+
+            Assert.That(tilemap.GetTile(Vector3Int.zero), Is.EqualTo(tile));
+        }
 }

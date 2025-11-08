@@ -48,12 +48,18 @@ public class Bloque
             tilemap.SetTile(Posicion, null);
         }
     }
+
+    public Bloque Clonar()
+    {
+        return new Bloque(Tipo, BloqueDificil, CantidadParaRomper, Posicion, TileOriginal);
+    }
 }
 
 // Clase que maneja la malla/grilla del juego integrada con Tilemap
 public class GridManager
 {
     private Dictionary<Vector3Int, Bloque> bloques = new Dictionary<Vector3Int, Bloque>();
+    private Dictionary<Vector3Int, Bloque> bloquesOriginales = new Dictionary<Vector3Int, Bloque>();
     public Tilemap tilemap;
     public GameManager gameManager;
 
@@ -71,6 +77,10 @@ public class GridManager
     private void CargarBloquesDesdeTilemap()
     {
         bloques.Clear();
+        bloquesOriginales.Clear();
+
+        if (tilemap == null) return;
+
         BoundsInt bounds = tilemap.cellBounds;
         TamanoMalla = new Vector3Int(bounds.size.x, bounds.size.y, 1);
 
@@ -86,6 +96,7 @@ public class GridManager
                     int cantidadRomper = esDificil ? UnityEngine.Random.Range(2, 4) : 1;
 
                     Bloque nuevoBloque = new Bloque(tipo, esDificil, cantidadRomper, pos, tile);
+                    bloquesOriginales[pos] = nuevoBloque.Clonar();
                     bloques[pos] = nuevoBloque;
                 }
             }
@@ -148,25 +159,35 @@ public class GridManager
     {
         TileBase tile = tilemap.GetTile(posicion);
 
-        // Si no hay tile, es espacio vacío (válido)
         if (tile == null) return true;
 
-        // Verificar el tipo de tile
         TipoBloque tipo = gameManager.ObtenerTipoBloqueDesdeAsset(tile);
 
-        // Solo las paredes bloquean el movimiento
-        // Spawn y Meta son transitables
         if (tipo == TipoBloque.Pared) return false;
 
-        // Si hay un bloque destructible en esa posición, no es válida
         if (bloques.ContainsKey(posicion)) return false;
 
-        // Cualquier otro caso es válido (espacio vacío, spawn, meta, etc.)
         return true;
     }
 
     public void ActualizarDanioBloques()
     {
         DibujarMatriz();
+    }
+
+    public void RestablecerBloques()
+    {
+        bloques.Clear();
+
+        foreach (var kvp in bloquesOriginales)
+        {
+            Bloque bloque = kvp.Value.Clonar();
+            bloques[kvp.Key] = bloque;
+
+            if (tilemap != null)
+            {
+                tilemap.SetTile(kvp.Key, bloque.TileOriginal);
+            }
+        }
     }
 }

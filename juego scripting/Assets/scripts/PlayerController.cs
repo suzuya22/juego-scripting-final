@@ -48,6 +48,21 @@ public class PlayerController
         puedeMoverse = habilitado;
     }
 
+    public void ReiniciarPosicion(Vector3Int nuevaPosicion)
+    {
+        Posicion = nuevaPosicion;
+
+        if (transformPersonaje != null && mallaReferencia?.tilemap != null)
+        {
+            Vector3 worldPos = mallaReferencia.tilemap.CellToWorld(Posicion) + Vector3.one * 0.5f;
+            transformPersonaje.position = worldPos;
+        }
+
+        LadoMirar = Vector3Int.right;
+        gameManager?.ActualizarSpriteDireccion(LadoMirar);
+        puedeMoverse = true;
+    }
+
     private void ProcesarMovimiento()
     {
         if (!puedeMoverse) return;

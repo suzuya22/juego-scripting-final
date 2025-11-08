@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
         bool tiempoRestante = temporizador != null && temporizador.Tick(Time.deltaTime);
         if (!tiempoRestante)
         {
-            ProcesarFinJuego();
+            ReiniciarPorTiempoAgotado();
             return;
         }
 
@@ -260,6 +260,18 @@ public class GameManager : MonoBehaviour
         personaje?.PermitirMovimiento(false);
 
         uiManager?.MostrarPanelNivelCompletado();
+    }
+
+    private void ReiniciarPorTiempoAgotado()
+    {
+        if (juegoTerminado) return;
+
+        StopAllCoroutines();
+        malla?.RestablecerBloques();
+        personaje?.ReiniciarPosicion(posicionInicialPersonaje);
+        personaje?.PermitirMovimiento(true);
+        temporizador?.Reiniciar();
+        NivelActualCompletado = false;
     }
 
     private void ProcesarFinJuego()
