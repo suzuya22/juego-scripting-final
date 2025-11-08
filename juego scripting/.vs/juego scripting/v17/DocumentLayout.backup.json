@@ -3,11 +3,15 @@
   "WorkspaceRootPath": "D:\\juego taller 5\\juego-scripting-final\\juego scripting\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7B824535-D5E9-B649-122A-2FCABA25DB7A}|Assembly-CSharp.csproj|d:\\juego taller 5\\juego-scripting-final\\juego scripting\\assets\\tests\\editmode\\bloquetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7B824535-D5E9-B649-122A-2FCABA25DB7A}|Assembly-CSharp.csproj|solutionrelative:assets\\tests\\editmode\\bloquetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A4B6AB0A-C082-E46D-2E54-3BF80CA853CB}|EditModeTests.csproj|d:\\juego taller 5\\juego-scripting-final\\juego scripting\\assets\\tests\\editmode\\tooluidisplaytests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A4B6AB0A-C082-E46D-2E54-3BF80CA853CB}|EditModeTests.csproj|solutionrelative:assets\\tests\\editmode\\tooluidisplaytests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7B824535-D5E9-B649-122A-2FCABA25DB7A}|Assembly-CSharp.csproj|d:\\juego taller 5\\juego-scripting-final\\juego scripting\\assets\\scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A4B6AB0A-C082-E46D-2E54-3BF80CA853CB}|EditModeTests.csproj|d:\\juego taller 5\\juego-scripting-final\\juego scripting\\assets\\tests\\editmode\\bloquetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A4B6AB0A-C082-E46D-2E54-3BF80CA853CB}|EditModeTests.csproj|solutionrelative:assets\\tests\\editmode\\bloquetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7B824535-D5E9-B649-122A-2FCABA25DB7A}|Assembly-CSharp.csproj|D:\\juego taller 5\\juego-scripting-final\\juego scripting\\assets\\scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7B824535-D5E9-B649-122A-2FCABA25DB7A}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -23,19 +27,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "ToolUIDisplayTests.cs",
+              "DocumentMoniker": "D:\\juego taller 5\\juego-scripting-final\\juego scripting\\Assets\\Tests\\EditMode\\ToolUIDisplayTests.cs",
+              "RelativeDocumentMoniker": "Assets\\Tests\\EditMode\\ToolUIDisplayTests.cs",
+              "ToolTip": "D:\\juego taller 5\\juego-scripting-final\\juego scripting\\Assets\\Tests\\EditMode\\ToolUIDisplayTests.cs",
+              "RelativeToolTip": "Assets\\Tests\\EditMode\\ToolUIDisplayTests.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAowAYAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-08T11:29:56.365Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "BloqueTests.cs",
               "DocumentMoniker": "D:\\juego taller 5\\juego-scripting-final\\juego scripting\\Assets\\Tests\\EditMode\\BloqueTests.cs",
               "RelativeDocumentMoniker": "Assets\\Tests\\EditMode\\BloqueTests.cs",
               "ToolTip": "D:\\juego taller 5\\juego-scripting-final\\juego scripting\\Assets\\Tests\\EditMode\\BloqueTests.cs",
               "RelativeToolTip": "Assets\\Tests\\EditMode\\BloqueTests.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA8AAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAIBJwA8AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-08T11:06:23.142Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "GameManager.cs",
               "DocumentMoniker": "D:\\juego taller 5\\juego-scripting-final\\juego scripting\\Assets\\scripts\\GameManager.cs",
               "RelativeDocumentMoniker": "Assets\\scripts\\GameManager.cs",
@@ -43,8 +60,7 @@
               "RelativeToolTip": "Assets\\scripts\\GameManager.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAQwAUBAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-14T19:55:30.934Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-14T19:55:30.934Z"
             }
           ]
         }
